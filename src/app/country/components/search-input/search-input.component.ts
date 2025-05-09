@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'country-search-input',
@@ -7,7 +7,7 @@ import { Component, output } from '@angular/core';
 })
 export class SearchInputComponent {
 
+  placeholder = input('Buscar');
   value = output<string>();
-
 
 }
