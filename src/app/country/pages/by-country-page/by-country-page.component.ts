@@ -7,4 +7,7 @@ import { CountryListComponent } from "../../components/country-list/country-list
   imports: [SearchInputComponent, CountryListComponent],
   templateUrl: './by-country-page.component.html',
 })
-export class ByCountryPageComponent { }
+export class ByCountryPageComponent {
+
+
+ }

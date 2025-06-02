@@ -19,16 +19,16 @@
           <td>{{ country.flag }}</td>
           <td>
             <img
-              [src]="country.flags.svg"
-              [alt]="country.name.common"
-              [alt]="country.capital"
+              [src]="country.flagSvg"
+              [alt]="country.name"
               class="w-10"
             />
           </td>
-          <td>{{ country.name.common }}</td>
+          <td>{{ country.name }}</td>
+          <td>{{ country.capital }}</td>
           <td>{{ country.population}}</td>
           <td>
-            <a class="link-primary">Más información</a>
+            <a class="link-primary cursor-pointer">Más información</a>
           </td>
         </tr>
 
