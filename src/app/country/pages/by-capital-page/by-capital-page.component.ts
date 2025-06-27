@@ -3,7 +3,8 @@ import { SearchInputComponent } from "../../components/search-input/search-input
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/country.interface';
-import { firstValueFrom } from 'rxjs';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { firstValueFrom, of } from 'rxjs';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -15,7 +16,17 @@ export class ByCapitalPageComponent {
   countryService = inject(CountryService);
   query = signal('');
 
-  countryResource = resource({
+  countryResource = rxResource({
+    request: () => ({ query: this.query() }),
+    loader: ({ request }) => {
+      if ( !request.query ) return of([]);
+
+      return this.countryService.searchByCapital(request.query);
+    },
+  });
+
+  //Codigo con uso de promesas
+/*   countryResource = resource({
     request: () => ({ query: this.query() }),
     loader: async({ request }) => {
       if ( !request.query ) return [];
@@ -24,7 +35,7 @@ export class ByCapitalPageComponent {
         this.countryService.searchByCapital(request.query)
       );
     }
-  });
+  }); */
 
   //Codigo para versiones hasta la 18
 /*   isLoading = signal(false);
