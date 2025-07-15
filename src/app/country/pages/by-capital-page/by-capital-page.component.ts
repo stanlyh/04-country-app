@@ -15,9 +15,10 @@ import { Country } from '../../interfaces/country.interface';
 export class ByCapitalPageComponent {
 
   countryService = inject(CountryService);
-  router = inject(Router);
 
   activatedRoute = inject(ActivatedRoute);
+  router = inject(Router);
+
   queryParam = this.activatedRoute.snapshot.queryParamMap.get('query') ?? '';
 
   query = linkedSignal(() => this.queryParam);
